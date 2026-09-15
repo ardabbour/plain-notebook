@@ -1,6 +1,10 @@
 # Plain Notebook 1.0.0
 
-Release-readiness pass completed on September 15, 2026.
+Released on September 15, 2026.
+
+- [Permanent demo](https://plain-notebook.ardabbour.workers.dev/en/)
+- [GitHub template](https://github.com/ardabbour/plain-notebook)
+- [Version 1.0.0 and downloads](https://github.com/ardabbour/plain-notebook/releases/tag/v1.0.0)
 
 ## What changed
 
@@ -12,6 +16,7 @@ Release-readiness pass completed on September 15, 2026.
 - Added clearer configuration/frontmatter validation and preserved query strings when the preview server redirects directory URLs.
 - Added Chromium, Firefox, and WebKit browser projects, plus a reusable live-deployment smoke test.
 - Added an optional Cloudflare static-assets configuration and documented permanent deployment.
+- Published the public GitHub template and permanent Cloudflare demo, with canonical URLs, language alternates, sitemap, and robots.txt. `SITE_URL` configures the deployment origin without hardcoding the demo's address into template copies.
 
 ## Verification
 
@@ -26,8 +31,12 @@ Release-readiness pass completed on September 15, 2026.
 | Automated accessibility | No axe WCAG 2 A/AA or 2.1 AA violations in the tested fixture states across the three engines |
 | Live hosting | Cloudflare Workers Static Assets; 15 content pages, 21 page/asset/index URLs, MIME types, and localized 404s verified |
 | Live browser smoke | Themes and persistence, search, mobile menus, both shipped languages, and no-JavaScript reading passed in all three engines |
+| Hosted GitHub Actions | All five jobs passed: Node 22/24 and Chromium/Firefox/WebKit |
+| Permanent deployment integrity | All 26 deployed files matched the validated release byte for byte; canonical URLs, sitemap, and robots.txt verified |
 
-The successful Cloudflare deployment used Wrangler 4.132.0 and configuration `wrangler.preview.jsonc`. The preview URL was https://plain-notebook-preview.meteor-partridge.workers.dev. It belongs to a temporary preview account and may expire; its continued availability is not a release guarantee. Account claim credentials are deliberately excluded from this repository.
+The permanent demo is hosted in the owner's Cloudflare account at https://plain-notebook.ardabbour.workers.dev. It uses Workers Static Assets without a Worker script or paid add-on. Its initial release was uploaded through the Cloudflare API using the asset routing settings in `wrangler.jsonc`; subsequent deployments can use Wrangler 4.132.0 as documented in README.md. The earlier temporary preview has been superseded. Credentials are excluded from the repository and release archives.
+
+The [initial hosted CI run](https://github.com/ardabbour/plain-notebook/actions/runs/35019416002) passed all five jobs. Each subsequent source push runs the same checks.
 
 ## Release boundaries
 
@@ -35,7 +44,6 @@ The successful Cloudflare deployment used Wrangler 4.132.0 and configuration `wr
 - WebKit is tested through Playwright; this is not a claim of testing every Safari version or physical iPhone. System font rendering varies between engines.
 - Automated accessibility checks supplement keyboard and layout tests; they do not establish full accessibility conformance or replace assistive-technology user testing.
 - The 197-page scenario establishes that tested size, not an unlimited capacity claim. Search loads a locale's whole index on demand.
-- CI is configured and its build/test commands passed locally. This workspace has no GitHub repository/remote, so a hosted Actions run has not occurred. The workflow activates when the source is pushed to a GitHub repository with Actions enabled.
-- Permanent hosting requires an authenticated host account and chosen site name/domain. The temporary public deployment fulfilled deployment verification; it is not a permanent production site.
+- Publishing updates is a documented manual command. Automatic redeployment is not enabled: the Cloudflare account's GitHub integration needs reconnection, and the connected API cannot create a deployment credential. This does not affect the permanent site's availability or GitHub's automated tests.
 
 See README.md for customization, commands, and hosting instructions. The distributable source archive includes the example content, tests, CI workflow, license, and documentation; installed dependencies, generated screenshots, build output, and credentials are excluded.

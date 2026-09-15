@@ -8,9 +8,7 @@ Includes nested navigation, breadcrumbs, page outlines, optional page search, li
 
 ## Start
 
-Install [Node.js](https://nodejs.org/) 22 or newer, then:
-
-Choose **Use this template** above to create your own repository, then clone it and run these commands inside it.
+Install [Node.js](https://nodejs.org/) 22 or newer. Choose **Use this template** above to create your own repository, then clone it and run these commands inside it:
 
 ```sh
 npm ci
@@ -139,6 +137,10 @@ SITE_URL=https://your-worker.your-account.workers.dev npm run check
 npx wrangler@4.132.0 login
 npx wrangler@4.132.0 deploy
 ```
+
+After the first login, publish future changes by repeating the check and deploy commands. The bundled CI workflow validates changes; it does not deploy them. For automatic publishing, connect your repository through Cloudflare's Git integration and configure `npm run check` as the build command, `npx wrangler@4.132.0 deploy` as the deploy command, and `SITE_URL` as your site's origin. That integration requires a separate GitHub connection in your Cloudflare account.
+
+The demo uses a permanent `workers.dev` address and static assets only. No paid plan or domain purchase is needed for this setup. [Static asset requests are free and unlimited](https://developers.cloudflare.com/workers/static-assets/billing-and-limitations/), subject to file limits. [Standard GitHub Actions runners are free for public repositories](https://docs.github.com/en/actions/concepts/billing-and-usage). Private repositories and optional services have their own allowances.
 
 The provided Cloudflare configuration assumes `basePath: ''`. For subdirectory deployment, mount the output at the corresponding directory on the host. The template's URL-prefix behavior is covered by the build checks.
 

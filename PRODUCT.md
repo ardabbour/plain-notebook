@@ -29,5 +29,5 @@ No personal biography or real portfolio material was supplied. All starter conte
 - Content and navigation before enhancement.
 - Treat reading direction and translation as foundational.
 
-## Open Decisions
-Public deployment URL, final owner identity, personal content, and visual editing integration.
+## Release
+Version 1.0.0 is published as the public GitHub template https://github.com/ardabbour/plain-notebook with a permanent demo at https://plain-notebook.ardabbour.workers.dev/en/. Each owner supplies their own identity and content. Visual editing remains an optional future feature outside v1.
