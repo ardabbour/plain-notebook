@@ -15,7 +15,7 @@ The regression was reproduced before the fix: editing a page in a running develo
 
 A fresh installation with all example content replaced by a two-page French-only notebook passed `npm ci`, 15 static/authoring tests, content validation, deployment dry run, and local preview. An intentionally broken link stopped the publishing command before Wrangler ran. This was an agent-run onboarding check; no external user testing was performed.
 
-Automatic deployment is implemented but remains disabled on the demo repository until its owner supplies `CLOUDFLARE_API_TOKEN` in GitHub Secrets. The account ID and site URL variables are configured. No paid service was added.
+Automatic deployment is enabled on the demo repository. GitHub Secrets stores the Cloudflare deployment credential; repository variables provide the account ID and site URL. Pushes to the default branch publish after all checks pass, and the workflow verifies the live site in Chromium, Firefox, and WebKit. The [activation run](https://github.com/ardabbour/plain-notebook/actions/runs/35026967845) records the end-to-end verification. No paid service was added.
 
 ---
 
