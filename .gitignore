@@ -6,6 +6,8 @@ dist/
 test-results/
 playwright-report/
 dist.tmp/
+.notebook-dev/
+.notebook-dev.tmp/
 .wrangler/
 .env
 .env.*

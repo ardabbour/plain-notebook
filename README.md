@@ -17,6 +17,8 @@ npm run dev
 
 Open **http://localhost:4321**. Changes to content, styles, configuration, and public assets rebuild the site; refresh the browser to see them. A broken Markdown link fails the build with the source filename, while the development server keeps the last successful output.
 
+Development output lives in `.notebook-dev/`. Production builds live in `dist/`, so you can keep editing locally without changing the files prepared for publication.
+
 ```sh
 npm run build    # Generate dist/
 npm run preview  # Serve the built site locally
@@ -37,6 +39,10 @@ For browser checks, run `npx playwright install chromium firefox webkit`, then `
 5. Build and publish **dist/** to any static host.
 
 All biographical and project copy is labeled example content. No personal details are assumed. This is a file-based template; editing requires a text editor and a local build or build-capable host. A visual CMS is not included.
+
+For a first edit, change the title and introduction in `content/en/index.md`, then refresh the browser. To add a page, copy `content/en/about.md` to `content/en/first-note.md`, give it a different `title` and `translationKey`, and replace its body. It appears in navigation automatically. Run `npm run check` before publishing.
+
+To keep only one language, remove both the unwanted entry in `site.config.js` and its matching `content/<locale>/` directory, and set `defaultLocale` to the remaining language. When deleting individual pages, update links to them too; `npm run check` reports broken links and their source files.
 
 ## Pages and navigation
 
@@ -130,15 +136,25 @@ Hashed CSS and JavaScript filenames support asset caching. Set cache headers at 
 
 ### Cloudflare example
 
-The optional **wrangler.jsonc** serves `dist/` with directory URLs and localized 404 documents. It was tested with Wrangler 4.132.0. Choose a worker name in that file, then:
+The optional **wrangler.jsonc** serves `dist/` with directory URLs and localized 404 documents. It was tested with Wrangler 4.132.0. Choose a worker name in that file, then sign in once:
 
 ```sh
-SITE_URL=https://your-worker.your-account.workers.dev npm run check
 npx wrangler@4.132.0 login
-npx wrangler@4.132.0 deploy
+npm run deploy
 ```
 
-After the first login, publish future changes by repeating the check and deploy commands. The bundled CI workflow validates changes; it does not deploy them. For automatic publishing, connect your repository through Cloudflare's Git integration and configure `npm run check` as the build command, `npx wrangler@4.132.0 deploy` as the deploy command, and `SITE_URL` as your site's origin. That integration requires a separate GitHub connection in your Cloudflare account.
+`npm run deploy` builds and validates all content before publishing. If validation fails, nothing is uploaded. Wrangler prints your site's address; set `url` in `site.config.js` to that origin and run `npm run deploy` again to include canonical links and a sitemap. Future updates use the same single command. To verify the build and deployment configuration without uploading, use `npm run deploy -- --dry-run`.
+
+### Automatic deployment
+
+The included GitHub Actions workflow can publish after all Node and browser checks pass. This route uses GitHub Actions directly and does not require Cloudflare's GitHub app connection.
+
+1. In Cloudflare, [create an API token for deploying Workers](https://developers.cloudflare.com/workers/ci-cd/external-cicd/github-actions/#api-token), scoped to the account hosting your site.
+2. In your GitHub repository, open **Settings → Secrets and variables → Actions**. Add the token as a **repository secret** named `CLOUDFLARE_API_TOKEN`.
+3. Under **Variables**, set `CLOUDFLARE_ACCOUNT_ID` to that account's ID, `SITE_URL` to your public origin, and `CLOUDFLARE_DEPLOY_ENABLED` to `true`.
+4. Push to your default branch or run **Actions → Template checks → Run workflow** on that branch.
+
+The workflow checks the site, publishes it, and runs live checks in three browsers. Pull requests and tags never publish; older commits are skipped when a newer default-branch commit exists. Set `CLOUDFLARE_DEPLOY_ENABLED` to `false` to pause publishing while retaining tests. Template copies start with deployment disabled because repository secrets and variables are not copied. Keep tokens in GitHub Secrets, never in source files.
 
 The demo uses a permanent `workers.dev` address and static assets only. No paid plan or domain purchase is needed for this setup. [Static asset requests are free and unlimited](https://developers.cloudflare.com/workers/static-assets/billing-and-limitations/), subject to file limits. [Standard GitHub Actions runners are free for public repositories](https://docs.github.com/en/actions/concepts/billing-and-usage). Private repositories and optional services have their own allowances.
 
@@ -160,7 +176,7 @@ Feature tests generate their own private fixture content under the operating sys
 
 The suite covers a French third language, a French-only customized installation, a 197-page fixture, deep navigation, long articles, draft exclusion, missing translations, code-direction isolation, and failed-build recovery. The complete release evidence and test limits are in **RELEASE.md**.
 
-**.github/workflows/ci.yml** runs on pushes, pull requests, and manual dispatch after this template is placed in a GitHub repository with Actions enabled. It checks Node 22 and 24, builds and validates your content, and runs Chromium, Firefox, and WebKit in separate jobs. Failed browser checks upload diagnostic artifacts. No deployment secrets are needed; the workflow does not publish your site.
+**.github/workflows/ci.yml** runs on pushes, pull requests, and manual dispatch after this template is placed in a GitHub repository with Actions enabled. It checks Node 22 and 24, builds and validates your content, and runs Chromium, Firefox, and WebKit in separate jobs. Failed browser checks upload diagnostic artifacts. Tests need no deployment secrets; publishing is disabled until you configure **Automatic deployment** above.
 
 ## License
 

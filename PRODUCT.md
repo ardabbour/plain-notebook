@@ -30,4 +30,4 @@ No personal biography or real portfolio material was supplied. All starter conte
 - Treat reading direction and translation as foundational.
 
 ## Release
-Version 1.0.0 is published as the public GitHub template https://github.com/ardabbour/plain-notebook with a permanent demo at https://plain-notebook.ardabbour.workers.dev/en/. Each owner supplies their own identity and content. Visual editing remains an optional future feature outside v1.
+Version 1.0.1 is published as the public GitHub template https://github.com/ardabbour/plain-notebook with a permanent demo at https://plain-notebook.ardabbour.workers.dev/en/. Each owner supplies their own identity and content. Visual editing remains an optional future feature outside v1.

@@ -1,3 +1,24 @@
+# Plain Notebook 1.0.1
+
+Released on September 15, 2026. [Download this release](https://github.com/ardabbour/plain-notebook/releases/tag/v1.0.1).
+
+## Onboarding and publishing fixes
+
+- Development writes to `.notebook-dev/`; production builds remain in `dist/`. Editing a running local site can no longer overwrite a production build or remove its canonical URLs.
+- `npm run deploy` builds and validates before publishing. `npm run deploy -- --dry-run` checks the same path without uploading.
+- Added opt-in GitHub Actions deployment after all Node and browser checks pass, with live checks after publishing. It skips pull requests, tags, and superseded commits. See README.md for the required secret and variables.
+- Added explicit first-edit, new-page, single-language, and publishing instructions.
+
+## Verification
+
+The regression was reproduced before the fix: editing a page in a running development server removed the public canonical URL from the prepared production output. The regression test now verifies that development edits leave production output untouched.
+
+A fresh installation with all example content replaced by a two-page French-only notebook passed `npm ci`, 15 static/authoring tests, content validation, deployment dry run, and local preview. An intentionally broken link stopped the publishing command before Wrangler ran. This was an agent-run onboarding check; no external user testing was performed.
+
+Automatic deployment is implemented but remains disabled on the demo repository until its owner supplies `CLOUDFLARE_API_TOKEN` in GitHub Secrets. The account ID and site URL variables are configured. No paid service was added.
+
+---
+
 # Plain Notebook 1.0.0
 
 Released on September 15, 2026.

@@ -5,7 +5,8 @@ import path from 'node:path';
 import { build, loadConfig, root } from './build.js';
 
 export async function startServer({ preview = false, watchFiles = !preview, port = Number(process.env.PORT || 4321), buildOptions = {} } = {}) {
-  const { outDir = path.join(root, 'dist'), configFile = path.join(root, 'site.config.js') } = buildOptions;
+  const { outDir = path.join(root, preview ? 'dist' : '.notebook-dev'), configFile = path.join(root, 'site.config.js') } = buildOptions;
+  buildOptions = { ...buildOptions, outDir };
   let result = preview ? { config: await loadConfig(configFile, buildOptions.configOverride) } : await build(buildOptions);
   const mime = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.json': 'application/json; charset=utf-8', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.webp': 'image/webp', '.xml': 'application/xml', '.txt': 'text/plain; charset=utf-8', '.pdf': 'application/pdf' };
   const server = createServer(async (request, response) => {
