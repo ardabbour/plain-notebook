@@ -12,7 +12,7 @@ export const messages = {
     returnHome: 'Return home', example: 'Example notebook · Make it your own',
     note: 'Note', tip: 'Tip', warning: 'Keep in mind', details: 'Read more',
     footnotes: 'Footnotes', footnoteBack: 'Back to reference', code: 'Code', table: 'Scrollable table',
-    related: 'In this section', equation: 'Scrollable equation', diagram: 'Diagram', diagramSource: 'Diagram source',
+    related: 'In this section', equation: 'Scrollable equation', diagram: 'Diagram', diagramSource: 'View diagram source',
   },
   ar: {
     home: 'الرئيسية', pages: 'الصفحات', navigation: 'التنقل', skip: 'انتقل إلى المحتوى',
@@ -27,7 +27,7 @@ export const messages = {
     returnHome: 'العودة إلى الرئيسية', example: 'دفتر تجريبي · اجعله خاصًا بك',
     note: 'ملاحظة', tip: 'نصيحة', warning: 'تنبيه', details: 'اقرأ المزيد',
     footnotes: 'الحواشي', footnoteBack: 'العودة إلى المرجع', code: 'شيفرة', table: 'جدول قابل للتمرير',
-    related: 'في هذا القسم', equation: 'معادلة قابلة للتمرير', diagram: 'مخطط', diagramSource: 'مصدر المخطط',
+    related: 'في هذا القسم', equation: 'معادلة قابلة للتمرير', diagram: 'مخطط', diagramSource: 'عرض مصدر المخطط',
   },
 };
 

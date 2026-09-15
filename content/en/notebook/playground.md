@@ -5,7 +5,7 @@ translationKey: playground
 description: An example of each element, with the source beneath it.
 order: 21
 ---
-Real examples of the Markdown we can use. Open **Example source** to see how each one is written. Try the theme and language controls while you browse.
+Real examples of the Markdown we can use. Open **View Markdown** to see how each one is written. Try the theme and language controls while you browse.
 
 For equations and diagrams, open [Technical experiments](./technical-notes.md). To change these examples, edit this Markdown file with `npm run dev` running, then refresh the browser.
 
@@ -22,7 +22,7 @@ Escaped punctuation: \*literal asterisks\*. A literal price: \$20.
 A deliberate line break comes next.  
 This starts on the next line.
 
-::::: details Example source
+::::: details View Markdown
 ````markdown
 **Bold**, *italic*, ***both***, ~~a revised thought~~, and `inline code`.
 
@@ -47,7 +47,7 @@ This starts on the next line.
 
 ###### A sixth-level heading
 
-::::: details Example source
+::::: details View Markdown
 ````markdown
 ### A section within a section
 
@@ -72,7 +72,7 @@ This starts on the next line.
   - [x] Check the title
   - [ ] Check the examples
 
-::::: details Example source
+::::: details View Markdown
 ````markdown
 1. Write the first idea.
 2. Add some detail.
@@ -97,7 +97,7 @@ This starts on the next line.
 
 A new thought after a horizontal rule.
 
-::::: details Example source
+::::: details View Markdown
 ````markdown
 > A notebook leaves room for a thought to change.
 >
@@ -117,7 +117,7 @@ A new thought after a horizontal rule.
 | `inline code` | Center | 123 |
 | Escaped pipe: \| | Center | 1,234 |
 
-::::: details Example source
+::::: details View Markdown
 ````markdown
 | Feature | Alignment | Example |
 | :--- | :---: | ---: |
@@ -152,7 +152,7 @@ Keep extra context near the thing it explains.
 :::
 ::::
 
-::::: details Example source
+::::: details View Markdown
 ````markdown
 ::: note A note
 A short aside with **emphasis** and a [link](./markdown.md).
@@ -197,7 +197,7 @@ Unknown or omitted languages are shown as plain text.
 
 ![The notebook’s open-book icon](/favicon.svg)
 
-::::: details Example source
+::::: details View Markdown
 ````markdown
 ~~~js
 const total = [1, 2, 3].reduce((sum, value) => sum + value, 0);
@@ -223,7 +223,7 @@ A thought with a footnote[^context]. The same note can be referenced again[^cont
 
 [^context]: A little more context, with **formatting** and an [ordinary link](./markdown.md).
 
-::::: details Example source
+::::: details View Markdown
 ````markdown
 A thought with a footnote[^context]. The same note can be referenced again[^context].
 
@@ -237,7 +237,7 @@ A thought with a footnote[^context]. The same note can be referenced again[^cont
 
 English text can sit beside العربية. Switch the language menu to inspect the whole layout from right to left.
 
-::::: details Example source
+::::: details View Markdown
 ````markdown
 هذه فقرة عربية تحتوي على **نص عريض** وشيفرة مثل `const count = 3;`.
 

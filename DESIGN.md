@@ -128,7 +128,7 @@ Native serif page titles sit above system sans-serif reading text and compact in
 
 ## Layout
 
-Desktop uses a 244px sticky navigation column with a viewport-height scroll area, a toolbar, and a centered reading column capped at 70ch. Pages with multiple second-level headings can add a 145px outline separated by 58px. The outline disappears at 1190px and below.
+Desktop uses a 244px sticky navigation column with a viewport-height scroll area, a toolbar, and a centered reading column capped at 70ch. Pages with multiple second-level headings can add a 145px outline separated by 58px. Long outlines scroll within the viewport. At 1190px and below, a native “On this page” disclosure below the page header replaces the side outline, so section links remain available on small screens without JavaScript.
 
 At 800px and below, the shell becomes one column and the page tree becomes a native disclosure; JavaScript initially collapses it. Reading gutters are 26px and toolbar gutters are 24px. Desktop reading gutters are 56px, changing to 42px at the intermediate breakpoint and 80px from 1500px. The toolbar wraps when needed. Logical layout properties mirror the shell and nesting for RTL.
 
@@ -159,6 +159,12 @@ Callouts use sidebar paper, a thin border, and a green title. Quotes use a singl
 ### Code
 
 Blocks use code paper, a border, and horizontal overflow. Inline code uses a compact tonal background and the reading-direction isolation rule. Syntax coloring reuses accent and muted ink plus the dedicated warm syntax token.
+
+### Technical examples
+
+Display equations use native MathML at 1.2 times the prose size and scroll within their own region. Inline equations retain the surrounding text size. Both stay left to right inside RTL pages. No math fonts are downloaded.
+
+Static SVG diagrams inherit the paper, ink, muted, and accent roles. A thin frame contains horizontal overflow. Keep the caption and source disclosure close to the diagram, with a single separator below the source control. Source controls use action labels and diagram controls include the caption in their accessible name. Source remains readable and selectable with JavaScript disabled.
 
 ### Child-page links
 

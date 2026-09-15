@@ -21,7 +21,7 @@ $$
 x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
 $$
 
-::::: details مصدر المثال
+::::: details عرض Markdown
 ````markdown
 مساحة الدائرة هي $A = \pi r^2$. ويمكن كتابة المتجه على الصورة $\mathbf{v} = (v_1, v_2)$.
 
@@ -49,7 +49,7 @@ $$
 P(A \mid B) = \frac{P(B \mid A)\,P(A)}{P(B)}
 $$
 
-::::: details مصدر المثال
+::::: details عرض Markdown
 ````markdown
 $$
 \sum_{k=1}^{n} k = \frac{n(n+1)}{2}
@@ -92,7 +92,7 @@ $$
 \end{aligned}
 $$
 
-::::: details مصدر المثال
+::::: details عرض Markdown
 ````markdown
 $$
 \begin{bmatrix}
@@ -138,7 +138,7 @@ $$
 \lim_{n\to\infty}\left(1+\frac{1}{n}\right)^n = e
 ~~~
 
-::::: details مصدر المثال
+::::: details عرض Markdown
 ````markdown
 | الكمية | الصيغة |
 | --- | --- |

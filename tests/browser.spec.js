@@ -13,6 +13,11 @@ test('technical notes render offline with native math, themed diagrams and no Ja
       await expect(page.locator('math')).toHaveCount(2);
       await expect(page.locator('mtable')).toBeVisible();
       await expect(page.locator('.diagram svg')).toHaveCount(2);
+      const outline = page.locator('.compact-outline');
+      await expect(outline).toBeVisible();
+      await outline.locator('summary').click();
+      await outline.getByRole('link', { name: 'Diagrams', exact: true }).click();
+      await expect(page).toHaveURL(/#diagrams$/);
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
       await expect(page.locator('.math-block')).toHaveCSS('direction', 'ltr');
       const diagram = page.locator('.diagram-scroll').first();
@@ -37,6 +42,8 @@ test('technical notes render offline with native math, themed diagrams and no Ja
 test('technical notes have accessible math and diagrams in both themes and directions', async ({ page }) => {
   for (const locale of ['en', 'ar']) {
     await page.goto(`/${locale}/technical/`);
+    await expect(page.locator('.compact-outline')).toBeHidden();
+    await expect(page.locator('.outline')).toBeVisible();
     for (const colorScheme of ['light', 'dark']) {
       await page.emulateMedia({ colorScheme });
       const audit = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze();

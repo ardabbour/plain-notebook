@@ -41,6 +41,7 @@ export function renderPage(page, pages, config, assets) {
   }).join('');
   const headings = (page.headings || []).filter(h => h.level === 2);
   const outline = page.toc !== false && headings.length > 1;
+  const outlineLinks = headings.map(h => `<li><a href="#${e(h.id)}">${e(h.title)}</a></li>`).join('');
   const absolute = path => config.url ? `${config.url}${path}` : '';
   const alternatives = config.url ? pages.filter(p => p.translationKey === page.translationKey).map(p => `<link rel="alternate" hreflang="${e(p.locale)}" href="${e(absolute(p.url))}">`).join('') : '';
   const guide = localPages.find(p => p.translationKey === 'markdown');
@@ -89,12 +90,13 @@ ${page.notFound ? '<meta name="robots" content="noindex">' : config.url ? `<link
         </div>
         <article class="${page.slug ? '' : 'home-page'}">
           <header class="page-header"><h1>${e(page.title)}</h1>${page.description && page.slug ? `<p class="page-description">${e(page.description)}</p>` : ''}${page.date ? `<p class="page-meta"><time datetime="${e(page.date)}">${e(new Intl.DateTimeFormat(page.locale, { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' }).format(new Date(page.date)))}</time><span aria-hidden="true">·</span>${page.readingTime} ${e(ui.minute)}</p>` : ''}</header>
+          ${outline ? `<details class="compact-outline"><summary>${e(ui.onThisPage)}</summary><nav aria-label="${e(ui.onThisPage)}"><ul>${outlineLinks}</ul></nav></details>` : ''}
           <div class="prose">${page.html}</div>
           ${related.length && page.showChildren !== false ? `<section class="child-pages" aria-label="${e(ui.related)}">${related.map(p => `<a href="${e(p.url)}"><span><strong>${e(p.title)}</strong><small>${e(p.description || '')}</small></span>${icon('arrow')}</a>`).join('')}</section>` : ''}
         </article>
         <footer class="page-footer"><span>${e(locale.name)}</span><a href="#top">${e(ui.back)} <span aria-hidden="true">↑</span></a></footer>
       </main>
-      ${outline ? `<aside class="outline"><nav aria-label="${e(ui.onThisPage)}"><p>${e(ui.onThisPage)}</p><ul>${headings.map(h => `<li><a href="#${e(h.id)}">${e(h.title)}</a></li>`).join('')}</ul></nav></aside>` : ''}
+      ${outline ? `<aside class="outline"><nav aria-label="${e(ui.onThisPage)}"><p>${e(ui.onThisPage)}</p><ul>${outlineLinks}</ul></nav></aside>` : ''}
     </div>
   </div>
 </div>

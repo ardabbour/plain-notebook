@@ -126,7 +126,7 @@ h1 { font-family: Georgia, "Times New Roman", serif; font-size: clamp(34px, 3.5v
 .prose h5, .prose h6 { font-size: 14px; line-height: 1.5; margin: 24px 0 10px; }
 .prose h6 { color: var(--muted); }
 .math-inline { display: inline-block; max-width: 100%; overflow-x: auto; vertical-align: middle; unicode-bidi: isolate; }
-.math-block { max-width: 100%; overflow-x: auto; padding: 16px 8px; margin-block: 24px; }
+.math-block { max-width: 100%; overflow-x: auto; padding: 20px 8px; margin-block: 24px; font-size: 1.2em; }
 .math-block math { margin: 0; }
 .diagram { margin: 28px 0; }
 .diagram-scroll { overflow-x: auto; padding-block: 12px; border: 1px solid var(--line); border-radius: 4px; }
@@ -139,8 +139,8 @@ h1 { font-family: Georgia, "Times New Roman", serif; font-size: clamp(34px, 3.5v
 }
 .diagram text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans Arabic", Arial, sans-serif; }
 .diagram .mono { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; }
-.diagram figcaption { font-size: 13px; color: var(--muted); margin-block-start: 8px; }
-.diagram > .prose-details { margin-block: 12px 24px; }
+.diagram figcaption { font-size: 13px; color: var(--muted); margin-block-start: 12px; }
+.diagram > .prose-details { margin-block: 4px 24px; border-block-start: 0; }
 .prose ul, .prose ol { padding-inline-start: 24px; margin: 16px 0 24px; }
 .prose li { padding-inline-start: 3px; margin-block: 8px; }
 .prose li::marker { color: var(--muted); }
@@ -162,6 +162,7 @@ h1 { font-family: Georgia, "Times New Roman", serif; font-size: clamp(34px, 3.5v
 .callout .callout-title { font-weight: 600; font-size: 13px; margin-block-end: 7px; color: var(--accent); }
 .prose-details { border-block: 1px solid var(--line); padding: 14px 20px; margin-block: 26px; }
 .prose-details summary { font-size: 14px; font-weight: 500; }
+.prose-details summary:hover { color: var(--accent); }
 .prose-details[open] summary { margin-block-end: 15px; }
 .prose-details > :last-child { margin-block-end: 2px; }
 .table-wrap { max-width: 100%; overflow-x: auto; margin-block: 24px; }
@@ -179,11 +180,16 @@ th { color: var(--ink); font-weight: 600; background: var(--sidebar); }
 .child-pages .icon { width: 17px; }
 [dir="rtl"] .child-pages .icon { transform: scaleX(-1); }
 .outline { padding-block-start: 82px; font-size: 11px; color: var(--muted); }
-.outline nav { position: sticky; inset-block-start: 35px; }
+.outline nav { position: sticky; inset-block-start: 35px; max-height: calc(100svh - 70px); overflow-y: auto; padding: 4px; }
 .outline p { margin: 0 0 15px; font-weight: 600; }
 .outline li { margin-block: 10px; line-height: 1.7; }
 .outline a { text-decoration: none; color: var(--muted); }
 .outline a:hover { color: var(--accent); text-decoration: underline; }
+.compact-outline { display: none; border-block: 1px solid var(--line); margin-block: 0 28px; font-size: 14px; }
+.compact-outline > summary { padding-block: 12px; list-style-position: inside; font-weight: 500; }
+.compact-outline > summary:hover { color: var(--accent); }
+.compact-outline ul { list-style: none; padding: 0 4px 12px; margin: 0; }
+.compact-outline a { display: block; padding-block: 8px; }
 .page-footer { border-block-start: 1px solid var(--line); margin-block-start: 52px; padding-block: 21px 28px; display: flex; justify-content: space-between; gap: 20px; color: var(--muted); font-size: 11px; }
 .page-footer a { color: var(--muted); text-decoration: none; }
 .page-footer a:hover { text-decoration: underline; }
@@ -193,6 +199,7 @@ th { color: var(--ink); font-weight: 600; background: var(--sidebar); }
 @media (max-width: 1190px) {
   .reading-layout, .reading-layout.has-outline { grid-template-columns: minmax(0, 70ch); padding-inline: 42px; }
   .outline { display: none; }
+  .compact-outline { display: block; }
 }
 @media (max-width: 800px) {
   .shell { grid-template-columns: minmax(0, 1fr); }
@@ -219,7 +226,7 @@ th { color: var(--ink); font-weight: 600; background: var(--sidebar); }
 }
 @media print {
   :root { --paper: white; --ink: black; --muted: #444; --accent: black; --line: #ccc; --code: #f5f5f5; }
-  .sidebar, .toolbar, .search, .outline, .page-footer, .skip-link { display: none !important; }
+  .sidebar, .toolbar, .search, .outline, .compact-outline, .page-footer, .skip-link { display: none !important; }
   .shell, .reading-layout, .reading-layout.has-outline { display: block; padding: 0; }
   .prose pre { white-space: pre-wrap; }
   .prose pre code { white-space: pre-wrap; }

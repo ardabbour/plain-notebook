@@ -5,175 +5,175 @@ translationKey: playground
 description: أمثلة قابلة للتجربة مع مصدر كل مثال.
 order: 21
 ---
-أمثلة فعلية لإمكانيات Markdown. افتح «مصدر المثال» لرؤية النص الذي ينتج كل مثال، وجرّب المظهر الفاتح والداكن واتجاه القراءة.
+أمثلة فعلية لإمكانيات Markdown. افتح «عرض Markdown» لرؤية النص الذي ينتج كل مثال، وجرّب المظهر الفاتح والداكن واتجاه القراءة.
 
 للمعادلات والمخططات، انتقل إلى [التجارب التقنية](./technical-notes.md). لتعديل الأمثلة، افتح هذا الملف في محرر النصوص وشغّل `npm run dev`، ثم حدّث المتصفح.
 
 ## النص والروابط
 
-**Bold**, *italic*, ***both***, ~~a revised thought~~, and `inline code`.
+**عريض**، *مائل*، ***عريض ومائل***، ~~فكرة معدّلة~~، وشيفرة مثل `inline code`.
 
-[The writing guide](./markdown.md), [a reference link][guide], and <https://example.com>.
+[دليل الكتابة](./markdown.md)، و[رابط مرجعي][guide]، و<https://example.com>.
 
 [guide]: ./markdown.md
 
-Escaped punctuation: \*literal asterisks\*. A literal price: \$20.
+علامات دون تنسيق: \*نجمتان ظاهرتان\*. وسعر مكتوب كما هو: \$20.
 
-A deliberate line break comes next.  
-This starts on the next line.
+ينتهي هذا السطر بمسافتين.  
+وتبدأ هذه الجملة في السطر التالي.
 
-::::: details مصدر المثال
+::::: details عرض Markdown
 ````markdown
-**Bold**, *italic*, ***both***, ~~a revised thought~~, and `inline code`.
+**عريض**، *مائل*، ***عريض ومائل***، ~~فكرة معدّلة~~، وشيفرة مثل `inline code`.
 
-[The writing guide](./markdown.md), [a reference link][guide], and <https://example.com>.
+[دليل الكتابة](./markdown.md)، و[رابط مرجعي][guide]، و<https://example.com>.
 
 [guide]: ./markdown.md
 
-Escaped punctuation: \*literal asterisks\*. A literal price: \$20.
+علامات دون تنسيق: \*نجمتان ظاهرتان\*. وسعر مكتوب كما هو: \$20.
 
-A deliberate line break comes next.  
-This starts on the next line.
+ينتهي هذا السطر بمسافتين.  
+وتبدأ هذه الجملة في السطر التالي.
 ````
 :::::
 
 ## مستويات العناوين
 
-### A section within a section
+### قسم داخل قسم
 
-#### A smaller heading
+#### عنوان أصغر
 
-##### A fifth-level heading
+##### عنوان من المستوى الخامس
 
-###### A sixth-level heading
+###### عنوان من المستوى السادس
 
-::::: details مصدر المثال
+::::: details عرض Markdown
 ````markdown
-### A section within a section
+### قسم داخل قسم
 
-#### A smaller heading
+#### عنوان أصغر
 
-##### A fifth-level heading
+##### عنوان من المستوى الخامس
 
-###### A sixth-level heading
+###### عنوان من المستوى السادس
 ````
 :::::
 
 ## القوائم والمهام
 
-1. Write the first idea.
-2. Add some detail.
-   - An observation
-   - A question
-     - A more specific question
+1. اكتب الفكرة الأولى.
+2. أضف بعض التفاصيل.
+   - ملاحظة
+   - سؤال
+     - سؤال أكثر تحديدًا
 
-- [x] Write a page
-- [ ] Revise the page
-  - [x] Check the title
-  - [ ] Check the examples
+- [x] كتابة صفحة
+- [ ] مراجعة الصفحة
+  - [x] تدقيق العنوان
+  - [ ] تدقيق الأمثلة
 
-::::: details مصدر المثال
+::::: details عرض Markdown
 ````markdown
-1. Write the first idea.
-2. Add some detail.
-   - An observation
-   - A question
-     - A more specific question
+1. اكتب الفكرة الأولى.
+2. أضف بعض التفاصيل.
+   - ملاحظة
+   - سؤال
+     - سؤال أكثر تحديدًا
 
-- [x] Write a page
-- [ ] Revise the page
-  - [x] Check the title
-  - [ ] Check the examples
+- [x] كتابة صفحة
+- [ ] مراجعة الصفحة
+  - [x] تدقيق العنوان
+  - [ ] تدقيق الأمثلة
 ````
 :::::
 
 ## الاقتباسات والفواصل
 
-> A notebook leaves room for a thought to change.
+> يترك الدفتر مساحة لتغيّر الفكرة.
 >
-> > A quotation can contain another quotation.
+> > يمكن للاقتباس أن يحتوي على اقتباس آخر.
 
 ---
 
-A new thought after a horizontal rule.
+فكرة جديدة بعد فاصل أفقي.
 
-::::: details مصدر المثال
+::::: details عرض Markdown
 ````markdown
-> A notebook leaves room for a thought to change.
+> يترك الدفتر مساحة لتغيّر الفكرة.
 >
-> > A quotation can contain another quotation.
+> > يمكن للاقتباس أن يحتوي على اقتباس آخر.
 
 ---
 
-A new thought after a horizontal rule.
+فكرة جديدة بعد فاصل أفقي.
 ````
 :::::
 
 ## الجداول
 
-| Feature | Alignment | Example |
+| العنصر | المحاذاة | المثال |
 | :--- | :---: | ---: |
-| **Emphasis** | Center | 12 |
-| `inline code` | Center | 123 |
-| Escaped pipe: \| | Center | 1,234 |
+| **تأكيد** | وسط | 12 |
+| `inline code` | وسط | 123 |
+| فاصل ظاهر: \| | وسط | 1,234 |
 
-::::: details مصدر المثال
+::::: details عرض Markdown
 ````markdown
-| Feature | Alignment | Example |
+| العنصر | المحاذاة | المثال |
 | :--- | :---: | ---: |
-| **Emphasis** | Center | 12 |
-| `inline code` | Center | 123 |
-| Escaped pipe: \| | Center | 1,234 |
+| **تأكيد** | وسط | 12 |
+| `inline code` | وسط | 123 |
+| فاصل ظاهر: \| | وسط | 1,234 |
 ````
 :::::
 
 ## الملاحظات والأقسام القابلة للتوسيع
 
-::: note A note
-A short aside with **emphasis** and a [link](./markdown.md).
+::: note ملاحظة
+تفصيل قصير مع **تأكيد** و[رابط](./markdown.md).
 :::
 
-::: tip A useful habit
-Give a diagram a caption that explains the point.
+::: tip عادة مفيدة
+أضف للمخطط وصفًا يشرح فكرته.
 :::
 
-::: warning A limitation
-Task boxes show the state written in the file. They are not an interactive task manager.
+::: warning حدود الميزة
+تعرض مربعات المهام الحالة المكتوبة في الملف. لتغييرها، عدّل المصدر.
 :::
 
-:::: details Open this section
-Lists, code, and other Markdown work inside.
+:::: details افتح هذا القسم
+يمكنك وضع القوائم والشيفرة وبقية عناصر Markdown في الداخل.
 
-- First detail
-- Second detail
+- التفصيل الأول
+- التفصيل الثاني
 
-::: note Nested note
-Keep extra context near the thing it explains.
+::: note ملاحظة متداخلة
+ضع السياق الإضافي بالقرب مما يشرحه.
 :::
 ::::
 
-::::: details مصدر المثال
+::::: details عرض Markdown
 ````markdown
-::: note A note
-A short aside with **emphasis** and a [link](./markdown.md).
+::: note ملاحظة
+تفصيل قصير مع **تأكيد** و[رابط](./markdown.md).
 :::
 
-::: tip A useful habit
-Give a diagram a caption that explains the point.
+::: tip عادة مفيدة
+أضف للمخطط وصفًا يشرح فكرته.
 :::
 
-::: warning A limitation
-Task boxes show the state written in the file. They are not an interactive task manager.
+::: warning حدود الميزة
+تعرض مربعات المهام الحالة المكتوبة في الملف. لتغييرها، عدّل المصدر.
 :::
 
-:::: details Open this section
-Lists, code, and other Markdown work inside.
+:::: details افتح هذا القسم
+يمكنك وضع القوائم والشيفرة وبقية عناصر Markdown في الداخل.
 
-- First detail
-- Second detail
+- التفصيل الأول
+- التفصيل الثاني
 
-::: note Nested note
-Keep extra context near the thing it explains.
+::: note ملاحظة متداخلة
+ضع السياق الإضافي بالقرب مما يشرحه.
 :::
 ::::
 ````
@@ -192,12 +192,12 @@ def square(value):
 ~~~
 
 ~~~
-Unknown or omitted languages are shown as plain text.
+تُعرض الشيفرة كنص عادي عند غياب اسم اللغة أو عدم دعمه.
 ~~~
 
-![The notebook’s open-book icon](/favicon.svg)
+![أيقونة الدفتر على شكل كتاب مفتوح](/favicon.svg)
 
-::::: details مصدر المثال
+::::: details عرض Markdown
 ````markdown
 ~~~js
 const total = [1, 2, 3].reduce((sum, value) => sum + value, 0);
@@ -210,24 +210,24 @@ def square(value):
 ~~~
 
 ~~~
-Unknown or omitted languages are shown as plain text.
+تُعرض الشيفرة كنص عادي عند غياب اسم اللغة أو عدم دعمه.
 ~~~
 
-![The notebook’s open-book icon](/favicon.svg)
+![أيقونة الدفتر على شكل كتاب مفتوح](/favicon.svg)
 ````
 :::::
 
 ## الحواشي
 
-A thought with a footnote[^context]. The same note can be referenced again[^context].
+فكرة مع حاشية[^context]. ويمكن الإشارة إلى الحاشية نفسها مرة أخرى[^context].
 
-[^context]: A little more context, with **formatting** and an [ordinary link](./markdown.md).
+[^context]: سياق إضافي مع **تنسيق** و[رابط عادي](./markdown.md).
 
-::::: details مصدر المثال
+::::: details عرض Markdown
 ````markdown
-A thought with a footnote[^context]. The same note can be referenced again[^context].
+فكرة مع حاشية[^context]. ويمكن الإشارة إلى الحاشية نفسها مرة أخرى[^context].
 
-[^context]: A little more context, with **formatting** and an [ordinary link](./markdown.md).
+[^context]: سياق إضافي مع **تنسيق** و[رابط عادي](./markdown.md).
 ````
 :::::
 
@@ -237,7 +237,7 @@ A thought with a footnote[^context]. The same note can be referenced again[^cont
 
 English text can sit beside العربية. Switch the language menu to inspect the whole layout from right to left.
 
-::::: details مصدر المثال
+::::: details عرض Markdown
 ````markdown
 هذه فقرة عربية تحتوي على **نص عريض** وشيفرة مثل `const count = 3;`.
 

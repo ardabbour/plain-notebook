@@ -59,6 +59,6 @@ export function technicalMarkdown(md, { ui, escapeHtml }) {
     });
     $('svg').attr({ role: 'img', 'aria-label': title, focusable: 'false' });
     const markdownSource = `\`\`\`mermaid ${title}\n${source}\n\`\`\``;
-    return `<figure class="diagram"><div class="diagram-scroll" dir="ltr" tabindex="0" role="region" aria-label="${escapeHtml(title)}">${$.xml()}</div><figcaption>${escapeHtml(title)}</figcaption><details class="prose-details"><summary>${escapeHtml(ui.diagramSource)}</summary><pre tabindex="0" dir="ltr"><code>${escapeHtml(markdownSource)}</code></pre></details></figure>\n`;
+    return `<figure class="diagram"><div class="diagram-scroll" dir="ltr" tabindex="0" role="region" aria-label="${escapeHtml(title)}">${$.xml()}</div><figcaption>${escapeHtml(title)}</figcaption><details class="prose-details"><summary>${escapeHtml(ui.diagramSource)}<span class="sr-only">: ${escapeHtml(title)}</span></summary><pre tabindex="0" dir="ltr"><code>${escapeHtml(markdownSource)}</code></pre></details></figure>\n`;
   };
 }

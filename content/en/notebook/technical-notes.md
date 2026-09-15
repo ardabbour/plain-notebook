@@ -21,7 +21,7 @@ $$
 x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
 $$
 
-::::: details Example source
+::::: details View Markdown
 ````markdown
 A circle has area $A = \pi r^2$. A vector can be written $\mathbf{v} = (v_1, v_2)$.
 
@@ -49,7 +49,7 @@ $$
 P(A \mid B) = \frac{P(B \mid A)\,P(A)}{P(B)}
 $$
 
-::::: details Example source
+::::: details View Markdown
 ````markdown
 $$
 \sum_{k=1}^{n} k = \frac{n(n+1)}{2}
@@ -92,7 +92,7 @@ $$
 \end{aligned}
 $$
 
-::::: details Example source
+::::: details View Markdown
 ````markdown
 $$
 \begin{bmatrix}
@@ -138,7 +138,7 @@ The identity $\sin^2\theta+\cos^2\theta=1$ still reads like part of the sentence
 \lim_{n\to\infty}\left(1+\frac{1}{n}\right)^n = e
 ~~~
 
-::::: details Example source
+::::: details View Markdown
 ````markdown
 | Quantity | Formula |
 | --- | --- |
