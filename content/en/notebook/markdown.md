@@ -7,6 +7,8 @@ order: 20
 ---
 Every page begins as a Markdown file. Write in any text editor, add it to the content folder, and build your site. The sidebar, breadcrumbs, and page outline follow along.
 
+Explore the [Markdown playground](./playground.md) for examples with source, or try [equations and diagrams](./technical-notes.md).
+
 ## Start a page
 
 Create `content/en/notebook/my-first-note.md`:

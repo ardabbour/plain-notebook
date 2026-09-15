@@ -99,6 +99,26 @@ Headings that would collide with page controls or footnotes also receive numeric
 
 Raw HTML is escaped; arbitrary MDX/JavaScript components are intentionally outside this Markdown format. Syntax highlighting happens during the build. External images and links remain external. Optimize your images before publishing. The writing guide in the example notebook demonstrates the rendered features.
 
+### Markdown experiments
+
+Open `/en/notebook/playground/` for rendered examples and their source, or `/en/notebook/technical-notes/` for equations and diagrams. Both have Arabic counterparts. Edit the corresponding Markdown files under `content/` while `npm run dev` runs, then refresh the browser.
+
+Use `$E = mc^2$` for inline math, `$$` on separate lines for display math, or a fenced `math` block. [KaTeX](https://katex.org/docs/supported.html) converts TeX notation to native MathML at build time. Current browsers display the result without downloaded math fonts or a client rendering library; exact typography depends on the browser and installed fonts. Invalid TeX stops the build with the source filename. Escape literal currency symbols as `\$` when needed.
+
+Use a fenced `mermaid` block, optionally followed by a plain-text caption:
+
+````markdown
+```mermaid A note becomes a page
+flowchart LR
+    A[Write] --> B[Build]
+    B --> C[Publish]
+```
+````
+
+[Beautiful Mermaid](https://github.com/lukilabs/beautiful-mermaid) generates SVG at build time. This template enables flowcharts, sequence diagrams, state diagrams (`stateDiagram-v2`), class diagrams, and entity relationships. It supports a subset of Mermaid syntax, not every Mermaid feature. Custom styles, initialization directives, click handlers, and other diagram types are disabled. Advanced unsupported statements may be ignored by the library, so review the rendered result. Diagram source is available in a native disclosure below each diagram. Give diagrams descriptive captions and explain complex relationships in nearby prose.
+
+Diagrams inherit the site's theme, with no external font requests or client diagram library. Equations remain left to right on RTL pages; use `flowchart RL` when the diagram itself should run right to left. Wide diagrams and block equations have keyboard-accessible horizontal scrolling.
+
 ## Languages and RTL
 
 Translations share a `translationKey`, not a filename. The language menu keeps the current page when a translation exists. When one is missing, the menu labels it unavailable and separately offers that language's homepage. The English-only “A quieter web” page demonstrates this state.

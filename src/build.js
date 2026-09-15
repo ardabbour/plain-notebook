@@ -89,7 +89,8 @@ export async function build({ outDir = path.join(root, 'dist'), contentDir = con
       inspect(state.tokens);
     });
     const env = {};
-    page.html = md.render(page.content, env);
+    try { page.html = md.render(page.content, env); }
+    catch (error) { throw new Error(`${page.file}: ${error.message}`, { cause: error }); }
     page.headings = env.headings;
   }
 

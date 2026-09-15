@@ -1,6 +1,50 @@
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
+test('technical notes render offline with native math, themed diagrams and no JavaScript', async ({ browser }) => {
+  const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 320, height: 740 } });
+  const page = await context.newPage();
+  const external = [];
+  page.on('request', request => { if (!request.url().startsWith('http://localhost:4322/')) external.push(request.url()); });
+  for (const locale of ['en', 'ar']) {
+    for (const colorScheme of ['light', 'dark']) {
+      await page.emulateMedia({ colorScheme });
+      await page.goto(`http://localhost:4322/${locale}/technical/`);
+      await expect(page.locator('math')).toHaveCount(2);
+      await expect(page.locator('mtable')).toBeVisible();
+      await expect(page.locator('.diagram svg')).toHaveCount(2);
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+      await expect(page.locator('.math-block')).toHaveCSS('direction', 'ltr');
+      const diagram = page.locator('.diagram-scroll').first();
+      await diagram.focus();
+      await expect(diagram).toBeFocused();
+      expect(await diagram.evaluate(el => el.scrollWidth > el.clientWidth)).toBe(true);
+      const summary = page.locator('.diagram details summary').first();
+      await summary.click();
+      await expect(page.locator('.diagram details').first()).toHaveAttribute('open');
+      await expect(page.locator('.diagram pre').first()).toContainText('flowchart LR');
+      // Labels must get a real background in both themes, not SVG's black fallback.
+      const labelBackground = page.locator('.diagram svg rect[fill="var(--bg)"]').first();
+      if (await labelBackground.count()) {
+        expect(await labelBackground.evaluate(el => getComputedStyle(el).fill)).toBe(colorScheme === 'light' ? 'rgb(253, 252, 249)' : 'rgb(28, 31, 27)');
+      }
+    }
+  }
+  expect(external).toEqual([]);
+  await context.close();
+});
+
+test('technical notes have accessible math and diagrams in both themes and directions', async ({ page }) => {
+  for (const locale of ['en', 'ar']) {
+    await page.goto(`/${locale}/technical/`);
+    for (const colorScheme of ['light', 'dark']) {
+      await page.emulateMedia({ colorScheme });
+      const audit = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze();
+      expect(audit.violations).toEqual([]);
+    }
+  }
+});
+
 test('nested navigation, breadcrumbs, translations and mobile disclosure work', async ({ page }) => {
   await page.goto('/en/');
   await page.locator('.nav-group > summary').filter({ hasText: 'Notebook' }).click();

@@ -2,6 +2,7 @@ import MarkdownIt from 'markdown-it';
 import footnote from 'markdown-it-footnote';
 import container from 'markdown-it-container';
 import hljs from 'highlight.js/lib/common';
+import { technicalMarkdown } from './technical-markdown.js';
 
 export const escapeHtml = (value) => String(value).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 
@@ -14,6 +15,7 @@ export function createMarkdown(ui) {
       return `<pre tabindex="0" dir="ltr" aria-label="${escapeHtml(ui.code)}"><code class="hljs">${text}</code></pre>`;
     },
   }).use(footnote);
+  md.use(technicalMarkdown, { ui, escapeHtml });
 
   for (const kind of ['note', 'tip', 'warning', 'details']) {
     md.use(container, kind, {
@@ -40,10 +42,10 @@ export function createMarkdown(ui) {
           state.tokens[i + 2].tag = 'h2';
         }
         const inline = state.tokens[i + 1];
-        const title = inline.children.filter(t => ['text', 'code_inline'].includes(t.type)).map(t => t.content).join('');
+        const title = inline.children.filter(t => ['text', 'code_inline', 'math_inline'].includes(t.type)).map(t => t.content).join('');
         const base = title.normalize('NFKC').toLowerCase().replace(/[^\p{L}\p{N}\s-]/gu, '').trim().replace(/\s+/g, '-') || 'section';
         let id = base, n = 2;
-        while (used.has(id) || /^fn(?:ref)?\d+(?::\d+)?$/.test(id)) id = `${base}-${n++}`;
+        while (used.has(id) || /^fn(?:ref)?\d+(?::\d+)?$/.test(id) || /^diagram-\d+-\d+$/.test(id)) id = `${base}-${n++}`;
         used.add(id);
         token.attrSet('id', id);
         state.env.headings.push({ id, title, level: Number(token.tag.slice(1)) });

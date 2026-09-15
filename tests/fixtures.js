@@ -24,6 +24,28 @@ export async function createFixture(directory, { count = 0 } = {}) {
   } };
   await writeFile(configFile, `export default ${JSON.stringify(config, null, 2)};\n`);
   for (const code of ['en', 'ar', 'fr']) {
+    await writePage(contentDir, `${code}/technical.md`, { title: 'Technical notes', translationKey: 'technical' }, String.raw`## Equations
+Inline $x^2$ and a matrix:
+
+$$
+\begin{bmatrix}1 & 2 \\ 3 & 4\end{bmatrix}
+$$
+
+## Diagrams
+
+~~~mermaid A decision
+flowchart LR
+ A[Write] --> B{Ready?}
+ B -->|Yes| C[Publish]
+ B -->|No| A
+~~~
+
+~~~mermaid Conversation
+sequenceDiagram
+ Reader->>Host: Request
+ Host-->>Reader: HTML
+~~~
+`);
     await writePage(contentDir, `${code}/index.md`, { title: code === 'fr' ? 'Bonjour' : 'Home', translationKey: 'home' }, '[About](./about.md)\n\n## Start\nAn introduction.\n\n## More\nAnother thought.');
     await writePage(contentDir, `${code}/about.md`, { title: 'About', translationKey: 'about' }, '## Bio\nA biography.');
     await writePage(contentDir, `${code}/notebook/index.md`, { title: 'The notebook', navTitle: 'Notebook', translationKey: 'notebook', order: 20 });
