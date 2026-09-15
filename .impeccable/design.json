@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-15T18:45:16.402477+00:00",
+  "title": "Design System: Personal Notebook",
+  "extensions": {
+    "colorMeta": {
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper"
+      },
+      "sidebar": {
+        "role": "neutral",
+        "displayName": "Sidebar paper"
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink"
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted ink"
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Pencil line"
+      },
+      "accent": {
+        "role": "primary",
+        "displayName": "Notebook green"
+      },
+      "selected": {
+        "role": "neutral",
+        "displayName": "Selected wash"
+      },
+      "code": {
+        "role": "neutral",
+        "displayName": "Code paper"
+      },
+      "focus": {
+        "role": "primary",
+        "displayName": "Focus green"
+      },
+      "syntax": {
+        "role": "neutral",
+        "displayName": "Warm syntax"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Native serif title",
+        "purpose": "Page titles; RTL uses inherited sans-serif."
+      },
+      "body": {
+        "displayName": "System reading text",
+        "purpose": "Prose within the document column."
+      },
+      "mono": {
+        "displayName": "System monospace",
+        "purpose": "Code blocks."
+      }
+    },
+    "shadows": [],
+    "motion": [],
+    "breakpoints": [
+      {
+        "name": "compact-max",
+        "value": "800px"
+      },
+      {
+        "name": "outline-hidden-max",
+        "value": "1190px"
+      },
+      {
+        "name": "wide-min",
+        "value": "1500px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Page tree",
+      "kind": "nav",
+      "refersTo": "navigation-link",
+      "description": "Nested page-tree navigation with a current-page state.",
+      "html": "<nav class=\"ds-tree\" aria-label=\"Pages\"><a href=\"#home\" aria-current=\"page\"><svg width=\"17\" height=\"17\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m3 10 9-7 9 7v10H3Z\"/><path d=\"M9 20v-7h6v7\"/></svg>Home</a><a href=\"#notes\"><svg width=\"17\" height=\"17\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 3h9l5 5v13H5Z\"/><path d=\"M14 3v6h5M8 13h8M8 17h6\"/></svg>Notes</a></nav>",
+      "css": ".ds-tree{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",\"Noto Sans Arabic\",Arial,sans-serif;background:var(--sidebar,#f5f4ef)}.ds-tree a{display:flex;align-items:center;gap:11px;padding:7px 10px;margin-block:3px;color:var(--muted,#696c62);font-size:13px;line-height:1.6;text-decoration:none;border-radius:4px}.ds-tree a:hover,.ds-tree a[aria-current]{background:var(--selected,#e8ece2);color:var(--ink,#282b25)}.ds-tree a[aria-current]{font-weight:600}.ds-tree a:focus-visible{outline:2px solid var(--focus,#54713c);outline-offset:4px;border-radius:2px;}@media(max-width:800px){.ds-tree a{min-height:40px}}"
+    },
+    {
+      "name": "Search",
+      "kind": "input",
+      "refersTo": "search-input",
+      "description": "Borderless page search with a visible shortcut hint.",
+      "html": "<div class=\"ds-search\"><label for=\"ds-search-input\" aria-label=\"Search\"><svg width=\"17\" height=\"17\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"10.5\" cy=\"10.5\" r=\"6.5\"/><path d=\"m16 16 5 5\"/></svg></label><input id=\"ds-search-input\" type=\"search\" placeholder=\"Search pages…\"><kbd aria-hidden=\"true\">/</kbd></div>",
+      "css": ".ds-search{display:flex;align-items:center;gap:9px;min-height:36px;color:var(--muted,#696c62);font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",\"Noto Sans Arabic\",Arial,sans-serif}.ds-search label{display:flex}.ds-search input{flex:1;min-width:0;background:transparent;border:0;color:var(--ink,#282b25);font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",\"Noto Sans Arabic\",Arial,sans-serif;font-size:12px;padding:7px 3px;caret-color:var(--accent,#3e6244)}.ds-search input::placeholder{color:var(--muted,#696c62);opacity:1}.ds-search input:focus-visible{outline:2px solid var(--focus,#54713c);outline-offset:4px;border-radius:2px;}.ds-search kbd{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",\"Noto Sans Arabic\",Arial,sans-serif;font-size:11px;line-height:1.3;border:1px solid var(--line,#e2e3da);border-radius:3px;padding:1px 5px}"
+    },
+    {
+      "name": "Callout",
+      "kind": "custom",
+      "refersTo": "callout",
+      "description": "A quiet bordered note within the reading column.",
+      "html": "<aside class=\"ds-callout\"><p class=\"ds-callout-title\">Note</p><p>This is a reusable notebook template.</p></aside>",
+      "css": ".ds-callout{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",\"Noto Sans Arabic\",Arial,sans-serif;font-size:16px;line-height:1.85;color:var(--ink,#282b25);padding:18px 21px;background:var(--sidebar,#f5f4ef);border:1px solid var(--line,#e2e3da);border-radius:4px;margin-block:26px}.ds-callout p{margin:0}.ds-callout .ds-callout-title{font-size:13px;font-weight:600;color:var(--accent,#3e6244);margin-block-end:7px}"
+    },
+    {
+      "name": "Code block",
+      "kind": "custom",
+      "refersTo": "code-block",
+      "description": "Scrollable monospace code on a tonal surface.",
+      "html": "<pre class=\"ds-code\" dir=\"ltr\"><code><span class=\"ds-keyword\">const</span> notebook = <span class=\"ds-string\">\"A place to think\"</span>;</code></pre>",
+      "css": ".ds-code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:13px;line-height:1.8;color:var(--ink,#282b25);background:var(--code,#f0f0e9);border:1px solid var(--line,#e2e3da);border-radius:4px;padding:19px 21px;overflow-x:auto;margin-block:22px;text-align:start}.ds-code code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:13px;white-space:pre}.ds-keyword{color:var(--accent,#3e6244)}.ds-string{color:var(--syntax,#845328)}"
+    },
+    {
+      "name": "Prose disclosure",
+      "kind": "custom",
+      "refersTo": "prose-disclosure",
+      "description": "Native expandable prose between horizontal rules.",
+      "html": "<details class=\"ds-disclosure\"><summary>Read more</summary><p>A little more context for this note.</p></details>",
+      "css": ".ds-disclosure{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",\"Noto Sans Arabic\",Arial,sans-serif;font-size:16px;line-height:1.85;color:var(--ink,#282b25);border-block:1px solid var(--line,#e2e3da);padding:14px 20px;margin-block:26px}.ds-disclosure summary{cursor:pointer;list-style-position:outside;font-size:14px;font-weight:500}.ds-disclosure[open] summary{margin-block-end:15px}.ds-disclosure p{margin:0 0 2px}.ds-disclosure summary:focus-visible{outline:2px solid var(--focus,#54713c);outline-offset:4px;border-radius:2px;}"
+    },
+    {
+      "name": "Child page",
+      "kind": "custom",
+      "refersTo": "child-page-link",
+      "description": "A linked child page with supporting description.",
+      "html": "<div class=\"ds-children\"><a href=\"#notes\"><span><strong>Notes</strong><small>Ideas and things worth keeping.</small></span><svg width=\"17\" height=\"17\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14m-5-5 5 5-5 5\"/></svg></a></div>",
+      "css": ".ds-children{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",\"Noto Sans Arabic\",Arial,sans-serif;line-height:1.7;border-block-start:1px solid var(--line,#e2e3da)}.ds-children a{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:17px 0;border-block-end:1px solid var(--line,#e2e3da);color:var(--accent,#3e6244);text-decoration:none}.ds-children strong{font-size:15px;font-weight:500;text-decoration:underline;text-underline-offset:.22em}.ds-children small{display:block;font-size:12px;color:var(--muted,#696c62);margin-block-start:4px}.ds-children a:focus-visible{outline:2px solid var(--focus,#54713c);outline-offset:4px;border-radius:2px;}.ds-children:dir(rtl) svg{transform:scaleX(-1)}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Personal Notebook",
+    "overview": "A quiet, text-first personal notebook uses paper surfaces, linked prose, and a page tree. Native fonts and controls keep it portable; modest hierarchy and thin separators help readers find their place. The user approved this restrained visual direction and native serif titles.",
+    "keyCharacteristics": [
+      "Warm paper and restrained green links.",
+      "A readable document column beside nested navigation.",
+      "Native disclosures, visible focus, and mirrored reading direction.",
+      "Light, dark, and system appearance without authored animation."
+    ],
+    "rules": [
+      {
+        "name": "The Reading Direction Rule",
+        "body": "Use logical spacing and borders; isolate inline code left-to-right with `direction: ltr` and `unicode-bidi: isolate` inside RTL prose.",
+        "section": "typography"
+      }
+    ],
+    "dos": [
+      "Do preserve native fonts, controls, and semantic navigation.",
+      "Do keep reading text within the established column and let code and tables scroll locally.",
+      "Do use logical spacing and isolate inline code in RTL content.",
+      "Do carry the complete palette roles through light, dark, and system appearance."
+    ],
+    "donts": [
+      "Don't require JavaScript for reading or ordinary page navigation.",
+      "Don't add unnecessary decoration or motion to this plain notebook.",
+      "Don't substitute fixed physical directions for mirrored navigation and prose spacing."
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "plain-notebook",
+  "compatibility_date": "2026-09-15",
+  "assets": {
+    "directory": "./dist",
+    "html_handling": "force-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+}

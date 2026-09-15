@@ -1,0 +1,32 @@
+{
+  "name": "plain-notebook",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "description": "A small, multilingual personal website built from Markdown.",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "node --watch src/server.js",
+    "build": "node src/build.js",
+    "preview": "node src/server.js --preview",
+    "test": "node --test tests/*.test.js",
+    "test:browser": "playwright test",
+    "check": "node src/check.js",
+    "test:deployment": "node scripts/smoke-deployment.js"
+  },
+  "dependencies": {
+    "gray-matter": "^4.0.3",
+    "highlight.js": "^11.12.0",
+    "markdown-it": "^15.0.2",
+    "markdown-it-container": "^4.0.0",
+    "markdown-it-footnote": "^4.0.0"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "^1.63.0",
+    "cheerio": "^1.2.0"
+  }
+}
